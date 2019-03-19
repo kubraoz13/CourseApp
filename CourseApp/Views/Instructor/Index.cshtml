@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CourseApp.Models.Instructor>
+@{
+    ViewData["Title"] = "Index";
+}
+@*liste olduğu için IEnurable kullanıyoruz.*@
+
+<div class="m-4">
+    <div class="bg-success text-white p-3">
+        Instructors
+    </div>
+    @*@foreach (var item in Model)
+    {
+        <div class="bg-primary text-white p-2 my-3">
+            m-3 isimlerin arasına boşluk koyuyor
+            @item.Name
+        </div>
+    }*@
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Contact?.Email</td>
+                <td>@item.Contact?.Address?.City</td>
+                
+                <td>
+                    <form asp-action="Delete" method="post">
+
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                            Edit
+                        </a>
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </form>
+                    @*<a href="#" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="#" class="btn btn-danger btn-sm">Delete</a>*@
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary">Create</a>
+

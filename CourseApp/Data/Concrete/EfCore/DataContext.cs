@@ -1,0 +1,20 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CourseApp.Models
+{
+    public class DataContext : DbContext
+    {
+        public DataContext(DbContextOptions<DataContext>options):base (options) //ctor yazıp taba basınca geliyor.
+        {
+
+        }
+
+        public DbSet<Request> Requests { get; set; } //dataset oluşması için classa(request clasına) ulaşmak zorunda.
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+    }
+}

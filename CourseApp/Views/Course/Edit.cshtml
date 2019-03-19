@@ -1,0 +1,96 @@
+﻿@model CourseApp.Models.Course
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="m-4">
+
+    <div class="bg-primary text-white text-center p-4">
+        Course Edit
+    </div>
+    @*tek bir hanede varsa güncelle yoksa kayıt yap kısmı bu orijinal kısmı*@
+    <form asp-action="@(ViewBag.ActionMode)" method="post">
+
+
+        <input type="hidden" name="original.Id" value="@Model.Id" />
+        <input type="hidden" name="original.Name" value="@Model.Name" />
+        <input type="hidden" name="original.Description" value="@Model.Description" />
+        <input type="hidden" name="original.Price" value="@Model.Price" />
+        <input type="hidden" name="original.isActive" value="@Model.isActive" />
+
+        <input type="hidden" name="original.Instructor.Id" value="@Model.Instructor?.Id" />
+        <input type="hidden" name="original.Instructor.Name" value="@Model.Instructor?.Name" />
+        <input type="hidden" name="original.Instructor.Contact.Id" value="@Model.Instructor?.Contact?.Id" />
+        <input type="hidden" name="original.Instructor.Contact.Email" value="@Model.Instructor?.Contact?.Email" />
+        <input type="hidden" name="original.Instructor.Contact.Phone" value="@Model.Instructor?.Contact?.Phone" />
+        <input type="hidden" name="original.Instructor.Contact.Address.Id" value="@Model.Instructor?.Contact?.Address?.Id" />
+        <input type="hidden" name="original.Instructor.Contact.Address.City" value="@Model.Instructor?.Contact?.Address?.City" />
+        <input type="hidden" name="original.Instructor.Contact.Address.Country" value="@Model.Instructor?.Contact?.Address?.Country" />
+        <input type="hidden" name="original.Instructor.Contact.Address.Text" value="@Model.Instructor?.Contact?.Address?.Text" />
+
+
+
+        <div class="row">
+            <div class="col-6 border">
+                <div class="bg-primary text-white p-2 mt-3">
+                    Course Area
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" class="form-control" />
+                </div>
+                <div class="custom-control custom-checkbox mb-2">
+                    <input asp-for="isActive" class="custom-control-input" />
+                    <label class="custom-control-label" asp-for="isActive"></label>
+                </div>
+
+            </div>
+            <div class="col-6 border">
+                <div class="bg-primary text-white p-2 mt-3">
+                    Instructor Area
+                </div>
+
+                <input type="hidden" name="Instructor.Id" />
+                <div class="form-group">
+                    <label asp-for="Instructor.Name"></label>
+                    <input asp-for="Instructor.Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Instructor.Contact.Email"></label>
+                    <input asp-for="Instructor.Contact.Email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Instructor.Contact.Phone"></label>
+                    <input asp-for="Instructor.Contact.Phone" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Instructor.Contact.Address.City"></label>
+                    <input asp-for="Instructor.Contact.Address.City" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Instructor.Contact.Address.Country"></label>
+                    <input asp-for="Instructor.Contact.Address.Country" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Instructor.Contact.Address.Text"></label>
+                    <input asp-for="Instructor.Contact.Address.Text" class="form-control" />
+                </div>
+
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+</div>
+
